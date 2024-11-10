@@ -1,28 +1,7 @@
 name: Build binaries
 
 on:
-  push:
-    branches:
-      - "**"
-    paths-ignore:
-      - '**.md'
-      - '.devcontainer/**'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/FUNDING.yml'
-      - '.github/**/*.md'
-      - '.vscode/**'
-      - 'HBC/**'
-      - 'Languages/**'
-  pull_request:
-    paths-ignore:
-      - '**.md'
-      - '.devcontainer/**'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/FUNDING.yml'
-      - '.github/**/*.md'
-      - '.vscode/**'
-      - 'HBC/**'
-      - 'Languages/**'
+  workflow_dispatch:
 
 jobs:
   download-build-tools:
