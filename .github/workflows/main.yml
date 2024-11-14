@@ -74,6 +74,12 @@ jobs:
           cp HBC/meta.xml upload/apps/usbloader_gx
           echo "sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
 
+      - name: upload zip
+        uses: actions/upload-artifact@v3
+        with: 
+          name: usbloadergx.zip
+          path: upload
+
       - name: Upload binary
         uses: actions/upload-artifact@v3
         with: 
