@@ -123,7 +123,7 @@ void InitVideo()
 	
 	vmode = VIDEO_GetPreferredMode(NULL); // get default video mode
 
-	vmode->viWidth = Settings.widescreen ? 708 : 694;
+	vmode->viWidth = Settings.widescreen ? 1280 : 1280;
 
 	if (Settings.PAL50)
 	{
@@ -136,7 +136,7 @@ void InitVideo()
 
 	VIDEO_Configure(vmode);
 
-	screenheight = 480;
+	screenheight = 720;
 	screenwidth = vmode->fbWidth;
 
 	// Allocate the video buffers
