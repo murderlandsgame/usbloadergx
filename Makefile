@@ -152,6 +152,11 @@ $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
+elf:
+	make
+	mkdir elf
+	cp boot.elf elf
+
 channel:
 	@[ -d build ] || mkdir -p build
 	@$(MAKE) BUILDMODE=channel --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
