@@ -181,6 +181,7 @@ deploy:
 	$(MAKE)
 	@echo Deploying...
 	@[ -d usbloader_gx ] || mkdir -p usbloader_gx
+	@cp $(TARGET).elf usbloader_gx/
 	@cp $(TARGET).dol usbloader_gx/
 	@cp HBC/icon.png usbloader_gx/
 	@cp HBC/meta.xml usbloader_gx/
