@@ -30,8 +30,8 @@ static unsigned char *gp_fifo = NULL;
 Mtx44 FSProjection2D;
 Mtx FSModelView2D;
 GXRModeObj *vmode; // Menu video mode
-int screenheight = 480;
-int screenwidth = 640;
+int screenheight = 720;
+int screenwidth = 1280;
 u32 frameCount = 0;
 
 /****************************************************************************
