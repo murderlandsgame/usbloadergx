@@ -64,24 +64,22 @@ jobs:
 
       - name: Compile USB Loader GX
         run: |
-          PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make
-
-      - name: Compile USB Loader GX
-        run: |
-          PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make elf
-
-      - name: Package
-        run: |
+          PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make -j42069
           mkdir -p upload/apps/usbloader_gx
           cp boot.dol upload/apps/usbloader_gx
           cp HBC/icon.png upload/apps/usbloader_gx
           cp HBC/meta.xml upload/apps/usbloader_gx
           echo "sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
 
+      - name: Compile USB Loader GX
+        run: |
+          make clean -j42069
+          PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make elf -j42069
+
       - name: upload zip
         uses: actions/upload-artifact@v3
         with: 
-          name: elf/boot.elf
+          name: boot.elf
           path: upload
 
       - name: Upload binary
@@ -89,9 +87,3 @@ jobs:
         with: 
           name: usbloadergx_${{ env.sha }}
           path: upload
-
-      - name: Upload debug binary
-        uses: actions/upload-artifact@v3
-        with: 
-          name: usbloadergx_${{ env.sha }}_debug
-          path: boot.elf
