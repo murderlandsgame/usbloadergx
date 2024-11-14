@@ -66,6 +66,10 @@ jobs:
         run: |
           PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make
 
+      - name: Compile USB Loader GX
+        run: |
+          PATH=$(pwd)/devkitpro/devkitPPC/bin:$PATH DEVKITPPC=$(pwd)/devkitpro/devkitPPC DEVKITPRO=$(pwd)/devkitpro make elf
+
       - name: Package
         run: |
           mkdir -p upload/apps/usbloader_gx
@@ -77,7 +81,7 @@ jobs:
       - name: upload zip
         uses: actions/upload-artifact@v3
         with: 
-          name: usbloader_gx.zip
+          name: elf/boot.elf
           path: upload
 
       - name: Upload binary
