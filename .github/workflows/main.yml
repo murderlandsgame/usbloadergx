@@ -77,7 +77,7 @@ jobs:
       - name: upload zip
         uses: actions/upload-artifact@v3
         with: 
-          name: usbloadergx.zip
+          name: usbloader_gx.zip
           path: upload
 
       - name: Upload binary
